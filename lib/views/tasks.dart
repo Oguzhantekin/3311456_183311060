@@ -1,8 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_app/views/chat.dart';
+import 'package:todo_app/views/login_screen.dart';
+import 'package:todo_app/views/welcome_screen.dart';
+import 'package:todo_app/widgets/call_chat_dialog.dart';
 import 'package:todo_app/widgets/update_task_dialog.dart';
 import '../utils/colors.dart';
 import '../widgets/delete_task_dialog.dart';
+import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 
 class Tasks extends StatefulWidget {
   const Tasks({Key? key}) : super(key: key);
@@ -99,6 +104,24 @@ class _TasksState extends State<Tasks> {
                                   builder: (context) => DeleteTaskDialog(taskId: taskId, taskName:taskName),
                                 ),
                               );
+                            },
+                          ),
+                          PopupMenuItem(
+                            value: 'Chat',
+                            child: const Text(
+                              'Get Help',
+                              style: TextStyle(fontSize: 13.0),
+                            ),
+                            onTap: (){
+                              String taskName = (data['taskName']);
+                              Future.delayed(
+                                const Duration(seconds: 0),
+                                    () => showDialog(
+                                  context: context,
+                                  builder: (context) => ChatGPTDialog(taskName: taskName),
+                                ),
+                              );
+
                             },
                           ),
                         ];

@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:todo_app/views/chat.dart';
 import 'firebase_options.dart';
 import 'package:todo_app/views/settings.dart';
 import 'views/home.dart';
@@ -29,6 +30,7 @@ Future main() async {
 
 class ToDoApp extends StatelessWidget {
   const ToDoApp({Key? key}) : super(key: key);
+  final String temp = "empty";
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +48,7 @@ class ToDoApp extends StatelessWidget {
           'settings':(context) => const SettingsScreen(),
           'about':(context) => const AboutScreen(),
           'git_screen':(context) => const GitScreen(),
+          'chat_screen':(context) =>  ChatScreen(taskName: temp),
         },
     );
   }
