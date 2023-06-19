@@ -11,8 +11,18 @@ import 'views/signup_screen.dart';
 import 'views/login_screen.dart';
 import 'views/about.dart';
 import 'views/git.dart';
+import 'views/meditation_screen.dart.';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:flutter/src/material/colors.dart';
+import "views/habit_screen.dart";
+import 'views/path_provider.dart';
 
 Future main() async {
+
+  await Hive.initFlutter();
+
+  await Hive.openBox("Habit_Database");
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -49,6 +59,9 @@ class ToDoApp extends StatelessWidget {
           'about':(context) => const AboutScreen(),
           'git_screen':(context) => const GitScreen(),
           'chat_screen':(context) =>  ChatScreen(taskName: temp),
+          'meditation_screen':(context) => const Meditation(),
+         'habit_screen':(context) => const HabitScreen(),
+          'path_example':(context) => const PathProv(title: "Path Provider"),
         },
     );
   }
