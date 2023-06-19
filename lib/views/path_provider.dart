@@ -43,7 +43,7 @@ class _PathProvState extends State<PathProv> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: "Path Provider Example"),
+      appBar: AppBar(title: Text("Path_Provider Example")),
       body: Column(
         children: [
           Padding(
