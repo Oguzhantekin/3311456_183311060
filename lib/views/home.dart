@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("To-Do List"),
+        title: const Text("Better Days"),
         backgroundColor: Colors.lightBlueAccent,
         actions: [
           IconButton(

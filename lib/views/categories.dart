@@ -31,7 +31,7 @@ class _GroceriesState extends State<Groceries> {
                  Navigator.pushNamed(context, 'habit_screen');
                 }),
             RoundedButton(
-                colour: Colors.green,
+                colour: Colors.brown,
                 title: 'Path Provider Example',
                 onPressed: () {
                   Navigator.pushNamed(context, 'path_example');
