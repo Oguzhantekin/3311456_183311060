@@ -54,12 +54,15 @@ class _PathProvState extends State<PathProv> {
             ),
           ),
           const SizedBox(
-            height: 8,
+            height: 20,
           ),
           ElevatedButton(
             child: Text('Create File'),
             onPressed: () => createFile(
                 textController.text), //calls createFile() when //button pressed
+          ),
+          const SizedBox(
+            height: 20,
           ),
           ElevatedButton(
             onPressed: () async {
