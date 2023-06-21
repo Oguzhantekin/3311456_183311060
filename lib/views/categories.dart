@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import '../widgets/rounded_button.dart';
 
-class Groceries extends StatefulWidget {
-  const Groceries({Key? key}) : super(key: key);
+class Catagories extends StatefulWidget {
+  const Catagories({Key? key}) : super(key: key);
 
   @override
-  State<Groceries> createState() => _GroceriesState();
+  State<Catagories> createState() => _CatagoriesState();
 }
 
-class _GroceriesState extends State<Groceries> {
+class _CatagoriesState extends State<Catagories> {
   @override
   Widget build(BuildContext context) {
     return  Padding(

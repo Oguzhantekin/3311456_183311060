@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Tasks(),
           ),
           Center(
-            child: Groceries(),
+            child: Catagories(),
           ),
         ],
       ),
