@@ -12,7 +12,7 @@ class HabitDatabase {
   // create initial default data
   void createDefaultData() {
     todaysHabitList = [
-      ["Learn Fluter",false],
+      ["Learn Flutter",false],
       ["Lift Weight", true],
       ["Pray", false],
       ["Eat",true],

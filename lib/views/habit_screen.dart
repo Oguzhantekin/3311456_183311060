@@ -121,34 +121,39 @@ class _HabitPageState extends State<HabitScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.lightBlueAccent[200],
-      floatingActionButton: MyFloatingActionButton(onPressed: createNewHabit),
-      body: ListView(
-        children: [
-          // monthly summary heat map
-          MonthlySummary(
-            datasets: db.heatMapDataSet,
-            startDate: _myBox.get("START_DATE"),
-          ),
+    return Padding(
+      padding: EdgeInsets.only(bottom:57),
+      child:  Scaffold (
+        backgroundColor: Colors.lightBlueAccent[200],
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: MyFloatingActionButton(onPressed: createNewHabit),
+        body: ListView(
+          children: [
+            // monthly summary heat map
+            MonthlySummary(
+              datasets: db.heatMapDataSet,
+              startDate: _myBox.get("START_DATE"),
+            ),
 
-          // list of habits
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: db.todaysHabitList.length,
-            itemBuilder: (context, index) {
-              return HabitTile(
-                habitName: db.todaysHabitList[index][0],
-                habitCompleted: db.todaysHabitList[index][1],
-                onChanged: (value) => checkBoxTapped(value, index),
-                settingsTapped: (context) => openHabitSettings(index),
-                deleteTapped: (context) => deleteHabit(index),
-              );
-            },
-          )
-        ],
+            // list of habits
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: db.todaysHabitList.length,
+              itemBuilder: (context, index) {
+                return HabitTile(
+                  habitName: db.todaysHabitList[index][0],
+                  habitCompleted: db.todaysHabitList[index][1],
+                  onChanged: (value) => checkBoxTapped(value, index),
+                  settingsTapped: (context) => openHabitSettings(index),
+                  deleteTapped: (context) => deleteHabit(index),
+                );
+              },
+            )
+          ],
+        ),
       ),
+
     );
   }
 }

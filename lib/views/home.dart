@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import '../widgets/add_task_dialog.dart';
 import 'tasks.dart';
 import 'categories.dart';
-
+import "habit_screen.dart";
+import 'meditation_screen.dart.';
+import 'path_provider.dart';
+import '/widgets/my_alert_box.dart';
+import 'package:todo_app/data/habit_database.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,6 +19,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final PageController pageController = PageController(initialPage: 0);
   late int _selectedIndex = 0;
+  bool visible = true;
+
+  @override
+  initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,18 +43,21 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       extendBody: true,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blueAccent,
-        onPressed: () {
-          showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return const AddTaskAlertDialog();
-            },
-          );
-        },
-        child: const Icon(Icons.add),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Visibility(
+        visible: visible,
+        child: FloatingActionButton(
+          backgroundColor: Colors.blueAccent,
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return const AddTaskAlertDialog();
+                },
+            );
+          },
+          child: const Icon(Icons.add),
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
@@ -60,6 +73,11 @@ class _HomeScreenState extends State<HomeScreen> {
               setState(() {
                 _selectedIndex = index;
                 pageController.jumpToPage(index);
+                if (_selectedIndex == 0) {
+                  visible = true;
+                } else if (_selectedIndex != 0) {
+                  visible = false;
+                }
               });
             },
             items: const [
@@ -69,6 +87,14 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(CupertinoIcons.tag),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(CupertinoIcons.hammer),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(CupertinoIcons.memories),
                 label: '',
               ),
             ],
@@ -82,7 +108,13 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Tasks(),
           ),
           Center(
-            child: Catagories(),
+            child: Meditation(),
+          ),
+          Center(
+            child: HabitScreen(),
+          ),
+          Center(
+            child: PathProv(title: "Path Provider Example"),
           ),
         ],
       ),
