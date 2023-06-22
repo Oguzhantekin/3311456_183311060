@@ -96,7 +96,7 @@ class _AddTaskAlertDialogState extends State<AddTaskAlertDialog> {
                       ),
                       // validator: (value) => value == null
                       //     ? 'Please select the task tag' : null,
-                      items: taskTags
+                      items:taskTags
                           .map(
                             (item) => DropdownMenuItem<String>(
                               value: item,
